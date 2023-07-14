@@ -2,15 +2,8 @@
 <html>
 <head>
   <title>Akumen Toolbox</title>
-  <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <style>
-    body {
-      margin: 0;
-      padding: 0;
-    }
     .container {
-      max-width: 100%;
-      margin: 0;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -83,17 +76,21 @@
       margin: 30px 0;
     }
   </style>
-  <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
-  <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
+  <script src="https://www.miro.com/app/static/sdk.1.1.0.js"></script>
   <script>
-    $(document).ready(function(){
-      $('.nav-link').click(function(){
-        $(this).tab('show');
+    function resizeIframe() {
+      const height = document.documentElement.scrollHeight;
+      miro.board.ui.resizeIframe({ height });
+    }
+
+    function initialize() {
+      miro.onReady(() => {
+        resizeIframe();
+        miro.addListener('SELECTION_UPDATED', resizeIframe);
       });
-      $('.dashbox').click(function(){
-        alert("Dashbox clicked!");
-      });
-    });
+    }
+
+    initialize();
   </script>
 </head>
 <body>
