@@ -1,12 +1,16 @@
 <!DOCTYPE html>
 <html>
 <head>
-  <title>Model Import/Export</title>
+  <title>Akumen Toolbox</title>
   <link rel="stylesheet" href="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/css/bootstrap.min.css">
   <style>
+    body {
+      margin: 0;
+      padding: 0;
+    }
     .container {
-      max-width: 500px;
-      margin: 0 auto;
+      max-width: 100%;
+      margin: 0;
       padding: 20px;
       border: 1px solid #ccc;
       border-radius: 5px;
@@ -20,6 +24,64 @@
       border-top: none;
       border-radius: 0 0 5px 5px;
     }
+    .elbowed-arrow-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .calculation-node-btn {
+      background-color: #c31a66;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 10px;
+    }
+    .numeric-node-btn {
+      background-color: #8fd14f;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .box {
+      border: 1px solid #ccc;
+      padding: 10px;
+      margin-bottom: 20px;
+    }
+    .dashbox {
+      border: 2px dashed #000;
+      padding: 10px;
+      margin-bottom: 20px;
+      cursor: pointer;
+    }
+    .dashbox:hover {
+      background-color: #f7f7f7;
+    }
+    .list-placeholder {
+      list-style-type: none;
+      margin: 0;
+      padding: 0;
+    }
+    .list-placeholder li {
+      padding: 5px 0;
+    }
+    .textbox-btn {
+      background-color: #000;
+      color: #fff;
+      border: none;
+      padding: 10px 20px;
+      border-radius: 5px;
+      margin-bottom: 20px;
+    }
+    .separator-line {
+      border-top: 1px solid #ccc;
+      margin: 30px 0;
+    }
   </style>
   <script src="https://code.jquery.com/jquery-3.6.0.min.js"></script>
   <script src="https://stackpath.bootstrapcdn.com/bootstrap/4.5.0/js/bootstrap.min.js"></script>
@@ -28,48 +90,79 @@
       $('.nav-link').click(function(){
         $(this).tab('show');
       });
+      $('.dashbox').click(function(){
+        alert("Dashbox clicked!");
+      });
     });
   </script>
 </head>
 <body>
   <div class="container">
-    <h1 class="text-center mb-4">Model Import/Export</h1>
-    <ul class="nav nav-tabs">
-      <li class="nav-item">
-        <a class="nav-link" data-toggle="tab" href="#exportTab">Export</a>
-      </li>
-      <li class="nav-item">
-        <a class="nav-link active" data-toggle="tab" href="#importTab">Import</a>
-      </li>
-    </ul>
-    <div class="tab-content">
-      <div id="exportTab" class="tab-pane fade">
-        <h2 class="mb-4">Export Model</h2>
-        <form>
-          <div class="form-group">
-            <label for="exportModel">Select Model:</label>
-            <select id="exportModel" class="form-control">
-              <option value="model1">Model 1</option>
-              <option value="model2">Model 2</option>
-              <option value="model3">Model 3</option>
-            </select>
-          </div>
-          <button type="submit" class="btn btn-primary">Export</button>
-        </form>
+    <div class="toolbox-section">
+      <h2 class="mb-4">Akumen Toolbox</h2>
+      <div class="box">
+        <button class="calculation-node-btn">Calculation Node</button>
+        <button class="numeric-node-btn">Numeric Node</button>
+        <button class="elbowed-arrow-btn">&#8614;</button>
       </div>
-      <div id="importTab" class="tab-pane fade show active">
-        <h2 class="mb-4">Import Model</h2>
-        <form>
-          <div class="form-group">
-            <label for="importModel">Select Model:</label>
-            <select id="importModel" class="form-control">
-              <option value="model1">Model 1</option>
-              <option value="model2">Model 2</option>
-              <option value="model3">Model 3</option>
-            </select>
+      <div class="dashbox">
+        <ul class="list-placeholder">
+          <li>List Item 1</li>
+          <li>List Item 2</li>
+          <li>List Item 3</li>
+        </ul>
+      </div>
+    </div>
+    <div class="separator-line"></div>
+    <div class="import-export-section">
+      <h3 class="mb-4">Akumen Export/Import</h3>
+      <ul class="nav nav-tabs">
+        <li class="nav-item">
+          <a class="nav-link" data-toggle="tab" href="#exportTab">Export</a>
+        </li>
+        <li class="nav-item">
+          <a class="nav-link active" data-toggle="tab" href="#importTab">Import</a>
+        </li>
+      </ul>
+      <div class="tab-content">
+        <div id="exportTab" class="tab-pane fade">
+          <div class="box">
+            <form>
+              <div class="form-group">
+                <label for="exportModel">Select Model:</label>
+                <select id="exportModel" class="form-control">
+                  <option value="model1">Model 1</option>
+                  <option value="model2">Model 2</option>
+                  <option value="model3">Model 3</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Export</button>
+            </form>
           </div>
-          <button type="submit" class="btn btn-primary">Import</button>
-        </form>
+        </div>
+        <div id="importTab" class="tab-pane fade show active">
+          <div class="box">
+            <form>
+              <div class="form-group">
+                <label for="importModel">Select Model:</label>
+                <select id="importModel" class="form-control">
+                  <option value="model1">Model 1</option>
+                  <option value="model2">Model 2</option>
+                  <option value="model3">Model 3</option>
+                </select>
+              </div>
+              <div class="form-group">
+                <label for="bakeryComponent">Bakery Component:</label>
+                <select id="bakeryComponent" class="form-control">
+                  <option value="component1">Component 1</option>
+                  <option value="component2">Component 2</option>
+                  <option value="component3">Component 3</option>
+                </select>
+              </div>
+              <button type="submit" class="btn btn-primary">Import</button>
+            </form>
+          </div>
+        </div>
       </div>
     </div>
   </div>
